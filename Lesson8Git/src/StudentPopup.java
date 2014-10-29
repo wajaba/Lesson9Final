@@ -1,12 +1,22 @@
 
 public class StudentPopup extends javax.swing.JDialog {
 
-
     public StudentPopup(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
+    public String getName() {
+        return txtName.getText();
+    }
+
+    public int[] getMarks() {
+        int marks[] = new int[3];
+        marks[0] = Integer.parseInt(tblMarks.getValueAt(0, 0).toString());
+        marks[1] = Integer.parseInt(tblMarks.getValueAt(0, 1).toString());
+        marks[2] = Integer.parseInt(tblMarks.getValueAt(0, 0).toString());
+        return marks;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -16,7 +26,7 @@ public class StudentPopup extends javax.swing.JDialog {
         txtName = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblMarks = new javax.swing.JTable();
         btnOk = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -29,7 +39,7 @@ public class StudentPopup extends javax.swing.JDialog {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblMarks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
             },
@@ -37,14 +47,19 @@ public class StudentPopup extends javax.swing.JDialog {
                 "Mark 1 ", "Mark 2", "Mark 3"
             }
         ));
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        tblMarks.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblMarks);
+        if (tblMarks.getColumnModel().getColumnCount() > 0) {
+            tblMarks.getColumnModel().getColumn(0).setResizable(false);
+            tblMarks.getColumnModel().getColumn(2).setResizable(false);
         }
 
         btnOk.setText("OK");
+        btnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -106,16 +121,17 @@ public class StudentPopup extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
-  
-    
-    
+    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOkActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblMarks;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 }

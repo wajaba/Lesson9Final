@@ -31,6 +31,9 @@ public class StudentGui extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         TxtName = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
+        txtMark1 = new javax.swing.JTextField();
+        txtMark2 = new javax.swing.JTextField();
+        txtMark3 = new javax.swing.JTextField();
 
         jScrollPane1.setViewportView(jTextPane1);
 
@@ -39,10 +42,24 @@ public class StudentGui extends javax.swing.JFrame {
 
         jLabel1.setText("Name");
 
+        TxtName.setEditable(false);
+
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
+            }
+        });
+
+        txtMark2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMark2ActionPerformed(evt);
+            }
+        });
+
+        txtMark3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMark3ActionPerformed(evt);
             }
         });
 
@@ -55,11 +72,20 @@ public class StudentGui extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TxtName, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(230, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAdd)
-                .addGap(81, 81, 81))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtMark1, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                        .addGap(119, 119, 119)
+                        .addComponent(btnAdd)
+                        .addGap(81, 81, 81))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtMark3, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                            .addComponent(txtMark2))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,8 +95,15 @@ public class StudentGui extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(TxtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAdd)
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAdd)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtMark1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMark2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(txtMark3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         pack();
@@ -81,7 +114,22 @@ public class StudentGui extends javax.swing.JFrame {
     spop.setModal(true);
     spop.setLocationRelativeTo(this);
     spop.setVisible(true);
+    //this code wont run until popup is disposed
+    String name = spop.getName();
+    int m[] = spop.getMarks();
+    TxtName.setText(name);
+    txtMark1.setText(""+ m[0]);
+    txtMark2.setText(""+ m[1]);
+    txtMark3.setText(""+ m[2]);
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void txtMark2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMark2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMark2ActionPerformed
+
+    private void txtMark3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMark3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMark3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,5 +172,8 @@ public class StudentGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextField txtMark1;
+    private javax.swing.JTextField txtMark2;
+    private javax.swing.JTextField txtMark3;
     // End of variables declaration//GEN-END:variables
 }
