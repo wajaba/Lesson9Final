@@ -77,7 +77,10 @@ public class StudentGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
+    StudentPopup spop = new StudentPopup(this,true); 
+    spop.setModal(true);
+    spop.setLocationRelativeTo(this);
+    spop.setVisible(true);
     }//GEN-LAST:event_btnAddActionPerformed
 
     /**
