@@ -1,4 +1,7 @@
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class StudentPopup extends javax.swing.JDialog {
 
     public StudentPopup(java.awt.Frame parent, boolean modal) {
@@ -12,9 +15,16 @@ public class StudentPopup extends javax.swing.JDialog {
 
     public int[] getMarks() {
         int marks[] = new int[3];
-        marks[0] = Integer.parseInt(tblMarks.getValueAt(0, 0).toString());
-        marks[1] = Integer.parseInt(tblMarks.getValueAt(0, 1).toString());
-        marks[2] = Integer.parseInt(tblMarks.getValueAt(0, 0).toString());
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblMarks.getModel();
+
+            marks[0] = Integer.parseInt(model.getValueAt(0, 0).toString());
+            marks[1] = Integer.parseInt(model.getValueAt(0, 1).toString());
+            marks[2] = Integer.parseInt(model.getValueAt(0, 0).toString());
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Fill out all fields");
+        }
         return marks;
     }
 
