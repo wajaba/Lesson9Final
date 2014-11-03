@@ -24,7 +24,9 @@ public class CrapsGui extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        lblDie = new javax.swing.JLabel();
+        lblDie1 = new javax.swing.JLabel();
+        lblDie2 = new javax.swing.JLabel();
+        txtOutput = new javax.swing.JTextField();
 
         jTextField1.setText("jTextField1");
 
@@ -40,19 +42,28 @@ public class CrapsGui extends javax.swing.JFrame {
             }
         });
 
-        lblDie.setText("  ");
-        lblDie.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblDie1.setText("  ");
+        lblDie1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblDie2.setText("  ");
+        lblDie2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jButton1)
-                .addGap(113, 113, 113)
-                .addComponent(lblDie, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtOutput)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDie1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDie2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,19 +71,26 @@ public class CrapsGui extends javax.swing.JFrame {
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(lblDie, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(160, Short.MAX_VALUE))
+                    .addComponent(lblDie1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDie2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        lblDie.getAccessibleContext().setAccessibleName("lblDie");
+        lblDie1.getAccessibleContext().setAccessibleName("lblDie");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        int num = (int)(Math.random()*6)+1;
-       URL file = getClass().getResource("d"+num+".JPG");
-       lblDie.setIcon(new ImageIcon(file));
+       URL file = getClass().getResource("images\\d"+num+".JPG");
+       lblDie1.setIcon(new ImageIcon(file));
+       int num2 = (int)(Math.random()*6)+1;
+       URL file2 = getClass().getResource("images\\d"+num2+".JPG");
+       lblDie2.setIcon(new ImageIcon(file2));
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -114,6 +132,8 @@ public class CrapsGui extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lblDie;
+    private javax.swing.JLabel lblDie1;
+    private javax.swing.JLabel lblDie2;
+    private javax.swing.JTextField txtOutput;
     // End of variables declaration//GEN-END:variables
 }
