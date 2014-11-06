@@ -1,13 +1,12 @@
+
 import javax.swing.ImageIcon;
 import java.net.URL;
 
-
-
 public class CrapsGui extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CrapsGui
-     */
+    String GameCondition = "";
+    int Goal, newRoll;
+
     public CrapsGui() {
         initComponents();
     }
@@ -23,6 +22,7 @@ public class CrapsGui extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         lblDie1 = new javax.swing.JLabel();
         lblDie2 = new javax.swing.JLabel();
@@ -33,7 +33,10 @@ public class CrapsGui extends javax.swing.JFrame {
         jLabel1.setText("   Roll Die");
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jTextField2.setText("jTextField2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Craps");
 
         jButton1.setText("Roll Die");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -84,13 +87,33 @@ public class CrapsGui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       int num = (int)(Math.random()*6)+1;
-       URL file = getClass().getResource("images\\d"+num+".JPG");
-       lblDie1.setIcon(new ImageIcon(file));
-       int num2 = (int)(Math.random()*6)+1;
-       URL file2 = getClass().getResource("images\\d"+num2+".JPG");
-       lblDie2.setIcon(new ImageIcon(file2));
-       
+        int Roll = Die.DieRoll();
+        URL file = getClass().getResource("images\\d" + Roll + ".JPG");
+        lblDie1.setIcon(new ImageIcon(file));
+        int Roll2 = Die.DieRoll();
+        URL file2 = getClass().getResource("images\\d" + Roll2 + ".JPG");
+        lblDie2.setIcon(new ImageIcon(file2));
+
+        if (GameCondition == "") {
+            Goal = Roll + Roll2;
+            GameCondition = Craps.checkFirstRoll(Roll, Roll2);
+        } else {
+            newRoll = Roll + Roll2;
+
+            if (newRoll == 7) {
+                GameCondition = "Lose";
+            } else if (newRoll == Goal) {
+                GameCondition = "Win";
+            }
+        }
+        txtOutput.setText(GameCondition);
+        if (GameCondition == "Win") {
+            GameCondition = "";
+        } else if (GameCondition == "Lose") {
+            GameCondition = "";
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -107,16 +130,21 @@ public class CrapsGui extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CrapsGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrapsGui.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CrapsGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrapsGui.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CrapsGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrapsGui.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CrapsGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrapsGui.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -132,6 +160,7 @@ public class CrapsGui extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblDie1;
     private javax.swing.JLabel lblDie2;
     private javax.swing.JTextField txtOutput;
