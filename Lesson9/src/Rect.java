@@ -10,21 +10,19 @@ import TurtleGraphics.Pen;
  *
  * @author tann1260
  */
-public class Rect implements Shape {
+public class Rect extends AbstractShape {
 
-    private double width, height, xPos, yPos;
+    private double width, height;
 
     public Rect() {
-        xPos = 0;
-        yPos = 0;
+        super();
         width = 1;
         height = 1;
 
     }
 
     public Rect(double w, double h, double y, double x) {
-        xPos = x;
-        yPos = y;
+        super(x, y);
         width = w;
         height = h;
     }
@@ -36,7 +34,7 @@ public class Rect implements Shape {
     @Override
     public void draw(Pen p) {
         p.up();
-        p.move(xPos,yPos);
+        p.move(xpos, ypos);
         p.down();
         p.setDirection(0);
         p.move(width);
@@ -49,19 +47,6 @@ public class Rect implements Shape {
         p.turn(90);
     }
 
-    public double getXpos() {
-        return xPos;
-    }
-
-    public double getYpos() {
-        return yPos;
-    }
-
-    public void move(double xLoc, double yLoc) {
-        xPos = xLoc;
-        yPos = yLoc;
-    }
-
     public void stretchBy(double factor) {
         height *= factor;
         width *= factor;
@@ -69,9 +54,8 @@ public class Rect implements Shape {
 
     public String toString() {
         String str = "this is a rectangle\n";
-        str += "XLoc " + xPos + "\t Yloc " + yPos + "\n";
         str += "width " + width + "\t height" + height + "\n";
-        str += "area " + area();
+        str += "\n" + super.toString();
         return str;
     }
 }
